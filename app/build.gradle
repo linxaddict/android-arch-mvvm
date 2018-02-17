@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     dataBinding {
@@ -12,7 +13,11 @@ android {
     }
 
     compileSdkVersion 27
-    defaultConfig {
+
+    defaultConfig {    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
         applicationId "com.machineinsight_it.androidarch.mvvm"
         minSdkVersion 21
         targetSdkVersion 27
@@ -21,11 +26,17 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
     }
 }
 
