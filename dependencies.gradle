@@ -1,0 +1,64 @@
+ext {
+    supportLibraryVersion = "27.0.2"
+    constraintLayoutVersion = "1.0.2"
+    daggerVersion = "2.13"
+    guavaVersion = "20.0"
+    ankoVersion = "0.10.4"
+    jsr250Version = "1.0"
+    dataBindingVersion = "3.0.1"
+    rxKotlinVersion = "2.2.0"
+    rxAndroidBleVersion = "1.4.3"
+    junitVersion = "4.12"
+    kotlinVersion = "1.2.20"
+    archComponentsVersion = "1.0.0"
+
+    archComponents = [
+            viewModel: "android.arch.lifecycle:extensions:${archComponentsVersion}",
+            viewModelProcessor: "android.arch.lifecycle:compiler:${archComponentsVersion}",
+            room: "android.arch.persistence.room:runtime:${archComponentsVersion}",
+            roomProcessor: "android.arch.persistence.room:compiler:${archComponentsVersion}"
+    ]
+
+    support = [
+            appCompat: "com.android.support:appcompat-v7:${supportLibraryVersion}",
+            design: "com.android.support:design:${supportLibraryVersion}",
+            constraintLayout: "com.android.support.constraint:constraint-layout:${constraintLayoutVersion}",
+            recyclerView: "com.android.support:recyclerview-v7:${supportLibraryVersion}",
+            annotations: "com.android.support:support-annotations:${supportLibraryVersion}"
+    ]
+
+    google = [
+            dagger: "com.google.dagger:dagger:${daggerVersion}",
+            daggerAndroidSupport: "com.google.dagger:dagger-android-support:${daggerVersion}",
+            daggerCompiler: "com.google.dagger:dagger-compiler:${daggerVersion}",
+            daggerProcessor: "com.google.dagger:dagger-android-processor:${daggerVersion}",
+            guava: "com.google.guava:guava:${guavaVersion}"
+    ]
+
+    jetbrains = [
+            anko: "org.jetbrains.anko:anko:${ankoVersion}",
+            ankoDesign: "org.jetbrains.anko:anko-design:${ankoVersion}",
+            ankoCommons: "org.jetbrains.anko:anko-commons:${ankoVersion}",
+            kotlin: "org.jetbrains.kotlin:kotlin-stdlib-jre7:${kotlinVersion}"
+    ]
+
+    javax = [
+            jsr250: "javax.annotation:jsr250-api:${jsr250Version}"
+    ]
+
+    dataBinding = [
+            compiler: "com.android.databinding:compiler:${dataBindingVersion}"
+    ]
+
+    rx = [
+            kotlin: "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}"
+    ]
+
+    ble = [
+            rxAndroidBle: "com.polidea.rxandroidble:rxandroidble:${rxAndroidBleVersion}"
+    ]
+
+    test = [
+            junit: "junit:junit:${junitVersion}"
+    ]
+}
