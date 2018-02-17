@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">AndroidArch-MVVM</string>
+    <string name="label_email">Email:</string>
+    <string name="label_password">Password:</string>
+    <string name="label_login">Login</string>
 </resources>
