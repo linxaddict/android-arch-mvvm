@@ -6,4 +6,5 @@
 
     <string name="error_invalid_email">Invalid e-mail address</string>
     <string name="error_password_too_short">Password too short</string>
+    <string name="error_field_required">Field is required</string>
 </resources>
