@@ -15,5 +15,6 @@
     <dimen name="font_xxxlarge">40sp</dimen>
 
     <dimen name="button_width">120dp</dimen>
+    <dimen name="input_height">84dp</dimen>
 
 </resources>

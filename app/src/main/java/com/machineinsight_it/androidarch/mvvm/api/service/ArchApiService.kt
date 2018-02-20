@@ -3,6 +3,7 @@ package com.machineinsight_it.androidarch.mvvm.api.service
 import com.machineinsight_it.androidarch.mvvm.api.model.ApiUser
 import com.machineinsight_it.androidarch.mvvm.api.model.AuthResult
 import io.reactivex.Observable
+import java.util.concurrent.TimeUnit
 
 class ArchApiService : ArchApi {
     private fun createUsers(): List<ApiUser> {
@@ -21,7 +22,9 @@ class ArchApiService : ArchApi {
     }
 
     override fun login(email: String, password: String): Observable<AuthResult> {
-        return Observable.just(AuthResult("email@test.com", "Test", "User"))
+        return Observable
+                .just(AuthResult("email@test.com", "Test", "User"))
+                .delay(2L, TimeUnit.SECONDS)
     }
 
 }

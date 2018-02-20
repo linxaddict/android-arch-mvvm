@@ -8,6 +8,8 @@ import com.machineinsight_it.androidarch.mvvm.ui.base.events.SnackBarEvent
 import com.machineinsight_it.androidarch.mvvm.ui.base.model.BaseViewModel
 import com.machineinsight_it.androidarch.mvvm.validation.EmailValidator
 import com.machineinsight_it.androidarch.mvvm.validation.PasswordLengthValidator
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class LoginViewModel @Inject constructor() : BaseViewModel() {
@@ -24,6 +26,8 @@ class LoginViewModel @Inject constructor() : BaseViewModel() {
     val emailError = ObservableField<Int>()
     val password = ObservableField<String>()
     val passwordError = ObservableField<Int>()
+
+    val loginInProgress = ObservableField<Boolean>()
 
     val openMainScreen = NavigationEvent()
     val showErrorMessage = SnackBarEvent()
@@ -64,6 +68,10 @@ class LoginViewModel @Inject constructor() : BaseViewModel() {
 
         if (inputValid) {
             archApiService.login(email.get(), password.get())
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .doOnSubscribe { loginInProgress.set(true) }
+                    .doFinally { loginInProgress.set(false) }
                     .subscribe(
                             {
                                 openMainScreen.call()

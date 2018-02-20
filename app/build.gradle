@@ -57,6 +57,7 @@ dependencies {
     implementation jetbrains.ankoCommons
 
     implementation rx.kotlin
+    implementation rx.android
 
     implementation archComponents.viewModel
 

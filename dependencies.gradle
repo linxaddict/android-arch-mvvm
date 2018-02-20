@@ -7,6 +7,7 @@ ext {
     jsr250Version = "1.0"
     dataBindingVersion = "3.0.1"
     rxKotlinVersion = "2.2.0"
+    rxAndroidVersion = "2.0.1"
     rxAndroidBleVersion = "1.4.3"
     junitVersion = "4.12"
     kotlinVersion = "1.2.20"
@@ -51,7 +52,8 @@ ext {
     ]
 
     rx = [
-            kotlin: "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}"
+            kotlin: "io.reactivex.rxjava2:rxkotlin:${rxKotlinVersion}",
+            android: "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}"
     ]
 
     ble = [
