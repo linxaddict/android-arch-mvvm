@@ -2,6 +2,7 @@ package com.machineinsight_it.androidarch.mvvm.ui.login
 
 import android.databinding.ObservableField
 import com.machineinsight_it.androidarch.mvvm.R
+import com.machineinsight_it.androidarch.mvvm.api.service.ArchApi
 import com.machineinsight_it.androidarch.mvvm.ui.base.events.NavigationEvent
 import com.machineinsight_it.androidarch.mvvm.ui.base.events.SnackBarEvent
 import com.machineinsight_it.androidarch.mvvm.ui.base.model.BaseViewModel
@@ -15,6 +16,9 @@ class LoginViewModel @Inject constructor() : BaseViewModel() {
 
     @Inject
     lateinit var passwordLengthValidator: PasswordLengthValidator
+
+    @Inject
+    lateinit var archApiService: ArchApi
 
     val email = ObservableField<String>()
     val emailError = ObservableField<Int>()
@@ -59,7 +63,15 @@ class LoginViewModel @Inject constructor() : BaseViewModel() {
         inputValid = validatePassword() && inputValid
 
         if (inputValid) {
-            openMainScreen.call()
+            archApiService.login(email.get(), password.get())
+                    .subscribe(
+                            {
+                                openMainScreen.call()
+                            },
+                            {
+                                showErrorMessage.call(R.string.error_unable_to_login)
+                            }
+                    )
         }
     }
 }

@@ -7,5 +7,5 @@ import io.reactivex.Observable
 interface ArchApi {
     fun login(email: String, password: String): Observable<AuthResult>
 
-    fun fetchApiUsers(): Observable<ApiUser>
+    fun fetchApiUsers(): Observable<List<ApiUser>>
 }
