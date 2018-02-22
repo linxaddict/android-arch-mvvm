@@ -8,11 +8,16 @@ import java.util.concurrent.TimeUnit
 class ArchApiService : ArchApi {
     private fun createUsers(): List<ApiUser> {
         val users = mutableListOf<ApiUser>()
-        users.add(ApiUser("User1", "User1", "Test", null))
-        users.add(ApiUser("User2", "User2", "Test", null))
-        users.add(ApiUser("User3", "User3", "Test", null))
-        users.add(ApiUser("User4", "User4", "Test", null))
-        users.add(ApiUser("User5", "User5", "Test", null))
+        users.add(ApiUser("User1", "User1", "Test",
+                "https://icdn.2cda.pl/obr/thumbs/86aa101d44209660c7ac999dd7fc6a09.jpg_oooooooooo_273x.jpg"))
+        users.add(ApiUser("User2", "User2", "Test",
+                "https://icdn.2cda.pl/obr/thumbs/86aa101d44209660c7ac999dd7fc6a09.jpg_oooooooooo_273x.jpg"))
+        users.add(ApiUser("User3", "User3", "Test",
+                "https://icdn.2cda.pl/obr/thumbs/86aa101d44209660c7ac999dd7fc6a09.jpg_oooooooooo_273x.jpg"))
+        users.add(ApiUser("User4", "User4", "Test",
+                "https://icdn.2cda.pl/obr/thumbs/86aa101d44209660c7ac999dd7fc6a09.jpg_oooooooooo_273x.jpg"))
+        users.add(ApiUser("User5", "User5", "Test",
+                "https://icdn.2cda.pl/obr/thumbs/86aa101d44209660c7ac999dd7fc6a09.jpg_oooooooooo_273x.jpg"))
 
         return users
     }

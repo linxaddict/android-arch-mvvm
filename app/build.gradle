@@ -51,6 +51,8 @@ dependencies {
     implementation google.daggerAndroidSupport
     implementation google.guava
 
+    implementation glide.glide
+
     implementation jetbrains.kotlin
     implementation jetbrains.anko
     implementation jetbrains.ankoDesign

@@ -8,4 +8,6 @@
     <string name="error_password_too_short">Password too short</string>
     <string name="error_field_required">Field is required</string>
     <string name="error_unable_to_login">Unable to login</string>
+
+    <string name="user_avatar">User avatar</string>
 </resources>

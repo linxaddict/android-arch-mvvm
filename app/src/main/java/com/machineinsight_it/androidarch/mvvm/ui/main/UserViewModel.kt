@@ -1,0 +1,18 @@
+package com.machineinsight_it.androidarch.mvvm.ui.main
+
+import android.databinding.ObservableField
+import com.machineinsight_it.androidarch.mvvm.api.model.ApiUser
+
+class UserViewModel(apiUser: ApiUser) {
+    val login = ObservableField<String>()
+    val firstName = ObservableField<String>()
+    val lastName = ObservableField<String>()
+    val avatar = ObservableField<String>()
+
+    init {
+        login.set(apiUser.login)
+        firstName.set(apiUser.firstName)
+        lastName.set(apiUser.lastName)
+        avatar.set(apiUser.avatar)
+    }
+}

@@ -17,4 +17,6 @@
     <dimen name="button_width">120dp</dimen>
     <dimen name="input_height">84dp</dimen>
 
+    <dimen name="avatar_size">64dp</dimen>
+
 </resources>
