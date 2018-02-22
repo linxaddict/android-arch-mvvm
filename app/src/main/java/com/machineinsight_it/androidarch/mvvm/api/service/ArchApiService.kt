@@ -23,13 +23,14 @@ class ArchApiService : ArchApi {
     }
 
     override fun fetchApiUsers(): Observable<List<ApiUser>> {
-        return Observable.just(createUsers())
+        return Observable
+                .just(createUsers())
+                .delay(2L, TimeUnit.SECONDS)
     }
 
     override fun login(email: String, password: String): Observable<AuthResult> {
         return Observable
                 .just(AuthResult("email@test.com", "Test", "User"))
-                .delay(2L, TimeUnit.SECONDS)
     }
 
 }

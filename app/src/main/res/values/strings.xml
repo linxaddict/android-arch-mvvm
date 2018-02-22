@@ -3,11 +3,13 @@
     <string name="label_email">Email:</string>
     <string name="label_password">Password:</string>
     <string name="label_login">Login</string>
+    <string name="label_users">Users</string>
 
     <string name="error_invalid_email">Invalid e-mail address</string>
     <string name="error_password_too_short">Password too short</string>
     <string name="error_field_required">Field is required</string>
     <string name="error_unable_to_login">Unable to login</string>
+    <string name="error_unable_to_fetch_users">Unable to fetch users</string>
 
     <string name="user_avatar">User avatar</string>
 </resources>

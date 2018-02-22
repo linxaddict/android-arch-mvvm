@@ -5,7 +5,6 @@ import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.databinding.DataBindingUtil
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import com.machineinsight_it.androidarch.mvvm.R
 import com.machineinsight_it.androidarch.mvvm.databinding.ActivityLoginBinding
@@ -27,6 +26,20 @@ class LoginActivity : AppCompatActivity() {
         ViewModelProviders.of(this, viewModelFactory).get(LoginViewModel::class.java)
     }
 
+    private fun subscribeForErrorEvent() {
+        viewModel.showErrorMessage.observe(this, Observer {
+            if (it != null) {
+                snackbar(binding.root, it)
+            }
+        })
+    }
+
+    private fun subscribeForOpenMainScreenEvent() {
+        viewModel.openMainScreen.observe(this, Observer {
+            startActivity<MainActivity>()
+        })
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -34,14 +47,7 @@ class LoginActivity : AppCompatActivity() {
 
         binding.model = viewModel
 
-        viewModel.openMainScreen.observe(this, Observer {
-            startActivity<MainActivity>()
-        })
-
-        viewModel.showErrorMessage.observe(this, Observer {
-            if (it != null) {
-                snackbar(binding.root, it)
-            }
-        })
+        subscribeForOpenMainScreenEvent()
+        subscribeForErrorEvent()
     }
 }

@@ -13,7 +13,8 @@ open class BaseViewModel : ViewModel() {
         disposables.add(d)
     }
 
-    fun clearDisposables() {
+    override fun onCleared() {
+        super.onCleared()
         disposables.clear()
     }
 }

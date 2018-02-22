@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.machineinsight_it.androidarch.mvvm">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".AndroidArchApplication"
         android:allowBackup="true"
@@ -11,7 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".ui.login.LoginActivity">
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:noHistory="true"
+            android:label="@string/label_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,7 +24,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.main.MainActivity" />
+        <activity
+            android:name=".ui.main.MainActivity"
+            android:label="@string/label_users"
+            />
 
     </application>
 

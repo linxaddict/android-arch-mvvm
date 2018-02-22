@@ -4,7 +4,7 @@ import android.databinding.ObservableField
 import com.machineinsight_it.androidarch.mvvm.R
 import com.machineinsight_it.androidarch.mvvm.api.service.ArchApi
 import com.machineinsight_it.androidarch.mvvm.ui.base.events.NavigationEvent
-import com.machineinsight_it.androidarch.mvvm.ui.base.events.SnackBarEvent
+import com.machineinsight_it.androidarch.mvvm.ui.base.events.TextMessageEvent
 import com.machineinsight_it.androidarch.mvvm.ui.base.model.BaseViewModel
 import com.machineinsight_it.androidarch.mvvm.validation.EmailValidator
 import com.machineinsight_it.androidarch.mvvm.validation.PasswordLengthValidator
@@ -30,7 +30,7 @@ class LoginViewModel @Inject constructor() : BaseViewModel() {
     val loginInProgress = ObservableField<Boolean>()
 
     val openMainScreen = NavigationEvent()
-    val showErrorMessage = SnackBarEvent()
+    val showErrorMessage = TextMessageEvent()
 
     private fun validateEmail(): Boolean {
         var valid = false
@@ -62,24 +62,30 @@ class LoginViewModel @Inject constructor() : BaseViewModel() {
         return valid
     }
 
+    private fun handleLoginError() = showErrorMessage.call(R.string.error_unable_to_login)
+
+    private fun handleLoginSuccessful() = openMainScreen.call()
+
+    private fun disableFetchInProgress() = loginInProgress.set(false)
+
+    private fun enableFetchInProgress() = loginInProgress.set(true)
+
     fun login() {
         var inputValid = validateEmail()
         inputValid = validatePassword() && inputValid
 
         if (inputValid) {
-            archApiService.login(email.get(), password.get())
+            val disposable = archApiService.login(email.get(), password.get())
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .doOnSubscribe { loginInProgress.set(true) }
-                    .doFinally { loginInProgress.set(false) }
+                    .doOnSubscribe { enableFetchInProgress() }
+                    .doFinally { disableFetchInProgress() }
                     .subscribe(
-                            {
-                                openMainScreen.call()
-                            },
-                            {
-                                showErrorMessage.call(R.string.error_unable_to_login)
-                            }
+                            { handleLoginSuccessful() },
+                            { handleLoginError() }
                     )
+
+            registerDisposable(disposable)
         }
     }
 }
