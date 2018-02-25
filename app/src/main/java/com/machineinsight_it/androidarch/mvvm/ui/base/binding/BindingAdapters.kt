@@ -7,7 +7,6 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.google.common.base.Strings
 
-
 object BindingAdapters {
     @JvmStatic
     @BindingAdapter("visibleIf")
