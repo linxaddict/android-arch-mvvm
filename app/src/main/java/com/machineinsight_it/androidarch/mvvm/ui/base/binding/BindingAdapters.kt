@@ -17,17 +17,13 @@ object BindingAdapters {
     @JvmStatic
     @BindingAdapter("error")
     fun setError(view: TextInputLayout, resId: Int?) {
-        if (resId != null) {
-            view.error = view.resources.getString(resId)
-        } else {
-            view.error = null
-        }
+        view.error = resId?.let { view.resources.getString(it) }
     }
 
     @JvmStatic
     @BindingAdapter("imageUrl")
-    fun imageUrl(view: ImageView, url: String) {
-        if (!Strings.isNullOrEmpty(url)) {
+    fun imageUrl(view: ImageView, url: String?) {
+        if (!url.isNullOrEmpty()) {
             Glide.clear(view)
             Glide.with(view.context)
                     .load(url)
